@@ -31,9 +31,4 @@ async def rot13(mes: Message, text):
     text = codecs.decode(text, 'rot_13')
     await mes('Ваш результат: ' + text)
 
-@bot.on.message_handler(text = ["/enrot13 <text>", "!enrot13 <text>"])
-async def enrot13(mes: Message, text):
-    text = codecs.encode(text, 'rot_13')
-    await mes('Ваш результат: ' + text)
-
 bot.run_polling(skip_updates=False)

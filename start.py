@@ -12,7 +12,8 @@ async def encode(mes: Message, text):
         text = text.encode("UTF_8")
         text = base64.b64encode(text)
         text = text.decode("UTF-8")
-        await mes('Ваш результат: ' + text)
+        await mes('Ваш результат: ')
+        await mes(text)
     except:
         await mes("Произошла неизвестная ошибка")
 
@@ -22,13 +23,15 @@ async def decode(mes: Message, text):
         text = text.encode("UTF_8")
         text = base64.b64decode(text)
         text = text.decode("UTF-8")
-        await mes('Ваш результат: ' + text)
+        await mes('Ваш результат: ')
+        await mes(text)
     except:
         await mes("Произошла неизвестная ошибка! (часто расшифровывают не зашифрованный текст)")
 
 @bot.on.message_handler(text = ["/rot13 <text>", "!rot13 <text>"])
 async def rot13(mes: Message, text):
     text = codecs.decode(text, 'rot_13')
-    await mes('Ваш результат: ' + text)
+    await mes('Ваш результат: ')
+    await mes(text)
 
 bot.run_polling(skip_updates=False)
